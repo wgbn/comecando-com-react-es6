@@ -18,7 +18,7 @@ var UserRepos = React.createClass({
                         <p>{repo.description}</p>
                         <p>
                             <a href={repo.html_url} className="btn btn-primary" role="button">Repository</a> &nbsp;
-                            <a href={repo.html_url + '/issues'} className="btn btn-default" role="button">Issues</a>
+                            <a href={repo.html_url + '/issues'} className="btn btn-default" role="button">Issues <span className="badge">{repo.open_issues_count}</span></a>
                         </p>
                     </div>
                 </div>

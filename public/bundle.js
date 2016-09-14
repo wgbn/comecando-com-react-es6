@@ -23010,7 +23010,12 @@
 	                        React.createElement(
 	                            "a",
 	                            { href: repo.html_url + '/issues', className: "btn btn-default", role: "button" },
-	                            "Issues"
+	                            "Issues ",
+	                            React.createElement(
+	                                "span",
+	                                { className: "badge" },
+	                                repo.open_issues_count
+	                            )
 	                        )
 	                    )
 	                )
