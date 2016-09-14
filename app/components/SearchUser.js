@@ -1,23 +1,25 @@
-var React = require('react');
-var GitHubUser = require('../services/GitHubUser');
+import React from 'react';
+import GitHubUser from '../services/GitHubUser';
 
-var SearchUser = React.createClass({
-    handleSubmit: function (e) {
+class SearchUser extends React.Component {
+    constructor (props) {
+        super (props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit (e) {
         e.preventDefault();
 
         GitHubUser.getByUsername(this.refs.username.value)
-            .then(function (response) {
-                this.props.updateUser(response.data);
-            }.bind(this));
+            .then( (response) => this.props.updateUser(response.data) );
         
         GitHubUser.getReposByUsername(this.refs.username.value)
-            .then(function (response) {
-                this.props.updateRepos(response.data);
-            }.bind(this));
-    },
-    render: function () {
+            .then( (response) => this.props.updateRepos(response.data) );
+    }
+
+    render () {
         return (
-            <div className="jumbotron">
+            <div className="jumbotr on">
                 <h1>GitHub Info</h1>
                 <div className="row">
                     <form onSubmit={this.handleSubmit}>
@@ -31,11 +33,11 @@ var SearchUser = React.createClass({
             </div>
         );
     }
-});
+}
 
 SearchUser.propTypes = {
     updateUser: React.PropTypes.func.isRequired,
     updateRepos: React.PropTypes.func.isRequired
 };
 
-module.exports = SearchUser;
+export default SearchUser;
